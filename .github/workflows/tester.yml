@@ -3,13 +3,13 @@ on:
   repository_dispatch:
     types: [TriggerRemoteRepoEvent]
 jobs:
-  repoBjobs:
+  myEvent:
     runs-on: ubuntu-latest
     steps:
       - name: On Being Triggered By Remote Repo
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.client_payload.ref }}
-        - run: echo ${{ github.event.client_payload.sha }}
-        - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-        - run: echo "🔎 The job was called on remote repo ${{ github.repository }}."
+      - run: echo ${{ github.event.client_payload.sha }}
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🔎 The job was called on remote repo ${{ github.repository }}."
