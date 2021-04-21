@@ -1,11 +1,15 @@
-name: repoBworkflow
+name: Workflow Triggered From Remote
 on:
   repository_dispatch:
-    types: [RepoAevent]
+    types: [TriggerRemoteRepoEvent]
 jobs:
   repoBjobs:
     runs-on: ubuntu-latest
     steps:
-      - name: testB
-        run: |
-          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: On Being Triggered By Remote Repo
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+        - run: echo ${{ github.event.client_payload.sha }}
+        - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+        - run: echo "🔎 The job was called on remote repo ${{ github.repository }}."
