@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo dispatch message
-        run: |
-          echo event triggered.
+        run: echo "event triggered."
+      - run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
