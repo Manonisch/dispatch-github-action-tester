@@ -9,7 +9,7 @@ jobs:
       - name: Sleep for 30 seconds
         uses: jakejarvis/wait-action@master
         with:
-          time: '90s'
+          time: '30s'
       - run: echo "sleep is over"
       - name: Echo dispatch message
         run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
